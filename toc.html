@@ -1,0 +1,27 @@
+<script defer src="https://cdn.staticfile.org/alpinejs/3.10.5/cdn.min.js"></script>
+<div id="myToc" class="transform fixed right-8 bottom-24 ease-out duration-300 z-20 cursor-pointer hover:-translate-y-2">
+    <div x-data="{ isOpen: false }" class="flex items-center">
+        <span class="border border-transparent"></span>
+    
+        <div class="relative">
+            <!-- Menu toggle button -->
+            <button @click="isOpen = !isOpen" class="iconfont relative z-10 block transition-colors duration-300 transform"  title="文章目录">
+                <svg class="icon opacity-30" width="36px" height="36px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M915 556H334.782c-60 0-60-90 0-90H915c60 0 60 90 0 90z m-0.377 371H334.405c-60 0-60-90 0-90h580.218c60 0 60 90 0 90z m0-741H334.405c-60 0-60-90 0-90h580.218c60 0 60 90 0 90zM128 206c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 35.346 0 64 28.654 64 64 0 35.346-28.654 64-64 64z m0 741c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 35.346 0 64 28.654 64 64 0 35.346-28.654 64-64 64z m0-371c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64 35.346 0 64 28.654 64 64 0 35.346-28.654 64-64 64z" fill="#2C2C2C" /></svg>
+            </button>
+    
+            <!-- Menu list -->
+            <div x-show="isOpen" 
+                @click.away="isOpen = false"
+                x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="opacity-0 scale-90"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-500"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-90"
+                class="post-toc absolute right-0 bottom-11 z-20 w-80 max-h-[calc(100vh-150px)] overflow-y-auto mt-2 bg-lmr-700 rounded-lg shadow-xl dark:bg-lmd-800"
+            >
+                {{ .TableOfContents }}    
+            </div>
+        </div>
+    </div>
+</div>
